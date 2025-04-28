@@ -18,6 +18,9 @@ import Head from "next/head";
 import StructuredData from "./components/structured-data";
 import ServiceSchema from "./components/service-schema";
 import SeoHead from "./components/seo-head";
+import HeroImg from "../public/hero.jpg";
+import AboutUsImg from "../public/about-us.jpg";
+import WarehouseSystemImg from "../public/warehouse-system.png";
 
 // Language content
 const content = {
@@ -74,12 +77,12 @@ const content = {
         {
           name: "Arif Ramadhan",
           role: "Founder",
-          bio: "15+ years in software development and digital transformation",
+          bio: "5+ years in software development and digital transformation",
         },
         {
           name: "M Saiful Abdulah",
           role: "Founder",
-          bio: "Expert in cloud architecture and emerging technologies",
+          bio: "Expert in server and backend logic",
         },
       ],
     },
@@ -445,7 +448,7 @@ export default function LandingPage() {
                     <div className="absolute inset-0 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800">
                       <div className="absolute inset-0 bg-[url('/batik-pattern.png')] bg-repeat opacity-5"></div>
                       <Image
-                        src="/placeholder.svg?height=400&width=500"
+                        src={HeroImg}
                         alt="Byteik Software Solutions - Blending modern technology with Indonesian heritage"
                         width={500}
                         height={400}
@@ -546,7 +549,7 @@ export default function LandingPage() {
                   <div className="relative h-[400px] w-full rounded-2xl overflow-hidden border border-gray-800">
                     <div className="absolute inset-0 bg-[url('/batik-pattern.png')] bg-repeat opacity-10"></div>
                     <Image
-                      src="/placeholder.svg?height=400&width=500"
+                      src={AboutUsImg}
                       alt="About Byteik"
                       width={500}
                       height={400}
@@ -686,7 +689,7 @@ export default function LandingPage() {
                     language === "en"
                       ? "Assisting in the process of processing goods to sales from the warehouse"
                       : "Membantu proses pengolahan barang hingga penjualan dari gudang",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: WarehouseSystemImg,
                   tech: ["React", "Golang", "Supabase"],
                 },
               ].map((project, index) => (
