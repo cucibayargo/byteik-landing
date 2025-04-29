@@ -21,6 +21,8 @@ import SeoHead from "./components/seo-head";
 import HeroImg from "../public/hero.jpg";
 import AboutUsImg from "../public/about-us.jpg";
 import WarehouseSystemImg from "../public/warehouse-system.png";
+import Cucibayargo from "../public/cucibayargo.png";
+import { useRouter } from "next/navigation";
 
 // Language content
 const content = {
@@ -193,6 +195,7 @@ export default function LandingPage() {
   const [language, setLanguage] = useState<"en" | "id">("en");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = content[language];
+  const router = useRouter();
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "id" : "en");
@@ -261,12 +264,12 @@ export default function LandingPage() {
               >
                 {language === "en" ? "Projects" : "Proyek"}
               </Link>
-              <Link
+              {/* <Link
                 href="#testimonials"
                 className="text-sm font-medium hover:text-purple-400 transition-colors"
               >
                 {language === "en" ? "Testimonials" : "Testimoni"}
-              </Link>
+              </Link> */}
               <Link
                 href="#about"
                 className="text-sm font-medium hover:text-purple-400 transition-colors"
@@ -308,6 +311,9 @@ export default function LandingPage() {
               <Button
                 variant="default"
                 className="hidden md:flex bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                onClick={() => {
+                  router.push("#contact");
+                }}
               >
                 {language === "en" ? "Contact Us" : "Hubungi Kami"}
               </Button>
@@ -341,49 +347,49 @@ export default function LandingPage() {
             <nav className="flex flex-col items-center justify-center h-[80vh] space-y-8">
               <Link
                 href="#home"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.home}
               </Link>
               <Link
                 href="#services"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.services}
               </Link>
               <Link
                 href="#projects"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {language === "en" ? "Projects" : "Proyek"}
               </Link>
               <Link
                 href="#testimonials"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {language === "en" ? "Testimonials" : "Testimoni"}
               </Link>
               <Link
                 href="#about"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.about}
               </Link>
               <Link
                 href="#team"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.team}
               </Link>
               <Link
                 href="#contact"
-                className="text-2xl font-medium hover:text-purple-400 transition-colors"
+                className="text-lg font-medium hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.contact}
@@ -391,7 +397,10 @@ export default function LandingPage() {
               <Button
                 variant="default"
                 className="mt-8 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  router.push("#contact");
+                }}
               >
                 {language === "en" ? "Contact Us" : "Hubungi Kami"}
               </Button>
@@ -402,7 +411,7 @@ export default function LandingPage() {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="relative pt-40 pb-32 overflow-hidden">
+        <section id="home" className="relative py-32 overflow-hidden">
           <div className="container mx-auto px-4">
             <section className="container mx-auto px-4">
               <article className="grid md:grid-cols-2 gap-12 items-center">
@@ -424,13 +433,17 @@ export default function LandingPage() {
                     {t.hero.subtitle}
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white">
+                    <Button
+                      className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
+                      onClick={() => router.push("#contact")}
+                    >
                       {t.hero.cta}
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
                     <Button
                       variant="outline"
                       className="border-gray-700 hover:bg-gray-800"
+                      onClick={() => router.push("#services")}
                     >
                       {t.hero.secondary}
                     </Button>
@@ -676,7 +689,7 @@ export default function LandingPage() {
                     language === "en"
                       ? "A POS (Point Of Sales) system for laundry business"
                       : "Sistem Kasir untuk bisnis laundry ",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: Cucibayargo,
                   tech: ["React", "Node.js", "Supbase"],
                   url: "https://cucibayargo.com/",
                 },
@@ -761,7 +774,7 @@ export default function LandingPage() {
         </section>
 
         {/* Client Feedback Section */}
-        <section id="testimonials" className="py-24 bg-gray-900/50 relative">
+        {/* <section id="testimonials" className="py-24 bg-gray-900/50 relative">
           <div className="absolute inset-0 bg-[url('/batik-pattern.png')] bg-repeat opacity-5"></div>
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -804,7 +817,7 @@ export default function LandingPage() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-xl p-6 h-full flex flex-col relative md:max-w-[400px]">
-                    {/* Batik-inspired decorative element */}
+                    Batik-inspired decorative element
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500/30 via-transparent to-blue-500/30"></div>
 
                     <div className="flex items-center mb-4">
@@ -855,7 +868,7 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Contact Section */}
         <section id="contact" className="py-24 relative">
@@ -1162,14 +1175,14 @@ export default function LandingPage() {
                     {language === "en" ? "Projects" : "Proyek"}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="#testimonials"
                     className="text-gray-400 hover:text-purple-400 transition-colors"
                   >
                     {language === "en" ? "Testimonials" : "Testimoni"}
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="#about"
